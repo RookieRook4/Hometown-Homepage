@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+nav {
+  background: linear-gradient(#bae6fd, #f0f9ff);
+  padding: 10px 50px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  color: #ea580c;
+  font-size: 1.7rem;
+}
+
+#content {
+  display: flex;
+  gap: 2.2rem;
+  font-size: 1.4rem;
+  text-shadow: 0 0 3px black;
+  list-style-type: none;
+}
+
+a {
+  color: #f7e733;
+  text-decoration: none;
+}
+
+#Belgrade-wrapper {
+  background: #f6f3e8;
+}
+
+#Belgrade {
+  width: 100%;
+  max-width: 1200px;
+  height: 370px;
+  background-image: url(images/Belgrade.jpg);
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.invitation {
+  background: lightblue;
+  color: #343434;
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+#header {
+  text-align: center;
+  padding: 40px;
+  margin: 0px;
+  background: #f6f3e8;
+  color: #343434;
+}
+
+#cool-places img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+#cool-places {
+  display: flex;
+  align-items: center;
+  background: #f6f3e8;
+  color: #343434;
+  padding: 30px;
+  gap: 2.5rem;
+}
+
+#your-guide {
+  width: 600px;
+  margin: 70px auto;
+  padding: 35px;
+  display: flex;
+  gap: 1.6rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: skyblue;
+  color: #343434;
+  border-radius: 6px;
+  border-bottom: 5px solid blue;
+}
+
+#your-guide img {
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+}
+
+p {
+  color: #5c5959;
+}
