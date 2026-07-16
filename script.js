@@ -1,10 +1,58 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  onValue,
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-database.js";
+
+const firebaseConfig = {
+  databaseURL:
+    "https://hometownhomepage-e5e2d-default-rtdb.europe-west1.firebasedatabase.app/",
+};
+
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const commentsInDB = ref(database, "comments");
+
 const coolDiv = document.getElementById("cool-places");
 const natureBtn = document.getElementById("nature-btn");
 const historyBtn = document.getElementById("history-btn");
 const sportBtn = document.getElementById("sports-btn");
 let buttons = document.querySelectorAll(".focused");
 
+let comments = {};
+
+onValue(commentsInDB, function (snapshot) {
+  if (snapshot.exists()) {
+    comments = snapshot.val();
+  } else {
+    comments = {};
+  }
+
+  renderComments();
+});
+
+const postBtn = document.getElementById("post-btn");
+let name = document.getElementById("name");
+let commentContent = document.getElementById("comment-content-el");
+
+let madeComments = document.getElementById("made-comments");
+
 buttons = Object.values(buttons);
+
+function renderComments() {
+  let comment_list = "";
+  if (Object.keys(comments).length > 0) {
+    for (const [key, value] of Object.entries(comments)) {
+      comment_list += `<div> <h3>${value.author}</h3> <p>${value.text}</p> </div>`;
+    }
+  } else {
+    comment_list += `<div> <h3>Author</h3> <p>There are no comments yet. Be the first one to comment.</p> </div>`;
+  }
+
+  madeComments.innerHTML = comment_list;
+}
 
 for (let i = 0; i < buttons.length; i++) {
   let button = buttons[i];
@@ -18,6 +66,24 @@ for (let i = 0; i < buttons.length; i++) {
     this.classList.add("selected");
   });
 }
+
+postBtn.addEventListener("click", function () {
+  const name_entered = name.value;
+  const comment_wrote = commentContent.value;
+
+  if (name_entered && comment_wrote) {
+    const new_comment = {
+      author: name_entered,
+      text: comment_wrote,
+    };
+    push(commentsInDB, new_comment);
+  }
+
+  name.value = "";
+  commentContent.value = "";
+
+  renderComments();
+});
 
 natureBtn.addEventListener("click", function () {
   coolDiv.innerHTML = `

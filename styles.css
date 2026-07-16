@@ -135,6 +135,52 @@ p {
   color: #5c5959;
 }
 
+#make-comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #343434;
+  margin: 50px 15%;
+  padding: 50px 0;
+  border-radius: 8px;
+  min-width: 300px;
+}
+
+#name {
+  width: 135px;
+  margin: 5px 0;
+  padding: 5px 10px;
+}
+
+#comment-content-el {
+  width: 275px;
+  height: 75px;
+  margin: 5px 0 30px;
+  padding: 5px 10px;
+}
+
+#name::placeholder {
+  text-align: center;
+}
+
+#comment-content-el::placeholder {
+  text-align: center;
+}
+
+#post-btn:hover {
+  background-color: #ec7b3d;
+}
+
+#made-comments {
+  text-align: center;
+}
+
+#made-comments div {
+  margin: 40px 15%;
+  border: 1px solid #343434;
+  border-radius: 8px;
+}
+
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
